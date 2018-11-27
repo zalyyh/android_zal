@@ -6,6 +6,8 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.text.InputFilter;
 import android.util.AttributeSet;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 public class ZEdit extends EditTextDelete {
     public ZEdit(Context context) {
@@ -59,7 +61,7 @@ public class ZEdit extends EditTextDelete {
     /**
      * 获取edit内容
      */
-    public String getEditText() {
+    public String getEditTextS() {
         return zEditText.getText().toString();
     }
 
@@ -98,7 +100,21 @@ public class ZEdit extends EditTextDelete {
      *
      * @param
      */
-    public void setegEx(int num) {
+    public void setMaxSize(int num) {
         zEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(num)}); //最大输入长度
+    }
+    /**
+     * 设置提示文字
+     *
+     * @param
+     */
+    public void setHint(String text) {
+        zEditText.setHint(text);
+    }
+    public EditText getEditText() {
+        return zEditText;
+    }
+    public ImageView getImage() {
+        return zImageView;
     }
 }
