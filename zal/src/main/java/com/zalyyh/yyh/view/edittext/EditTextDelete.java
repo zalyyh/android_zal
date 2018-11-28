@@ -1,15 +1,20 @@
-package com.zalyyh.yyh.zal.view.edittext;
+package com.zalyyh.yyh.view.edittext;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.zalyyh.yyh.zal.R;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,6 +34,16 @@ public class EditTextDelete extends LinearLayout implements TextWatcher {
     }
     public EditTextDelete(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.EditTextDelete);
+        for (int i = 0; i < a.getIndexCount(); i++) {
+            int attr = a.getIndex(i);
+            if(attr == R.styleable.EditTextDelete_digits){
+                CharSequence digits =  a.getText(attr);
+                Log.e("zalyyh",digits.toString());
+            }
+        }
+
+
         init(context);
     }
     private void init(Context context) {

@@ -2,18 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
-   >
-<com.zalyyh.yyh.zal.view.edittext.ZEdit
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/holo_red_light">
+<com.zalyyh.yyh.view.edittext.ZEdit
     android:id="@+id/edit_query"
     android:layout_width="match_parent"
     android:layout_margin="20dp"
     android:layout_gravity="center"
     android:padding="10dp"
     android:digits="0123456789"
+    app:digits="0123456789"
     android:background="@drawable/shoujihao"
     android:layout_height="wrap_content">
 
-</com.zalyyh.yyh.zal.view.edittext.ZEdit>
+</com.zalyyh.yyh.view.edittext.ZEdit>
 
 </LinearLayout>
