@@ -12,6 +12,7 @@
     android:padding="10dp"
     android:digits="0123456789"
     app:digits="0123456789"
+    app:gravity="center"
     android:background="@drawable/shoujihao"
     android:layout_height="wrap_content">
 

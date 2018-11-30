@@ -15,6 +15,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
+    int i = 0;
+    private void cesh() {
+
+//        RemoteViews views = Notice.CustomView(this,R.layout.noti_update);
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+//        builder.setContentTitle(getString(R.string.app_name))
+//                .setContentText("正在下载")
+//                .setSmallIcon(R.mipmap.dalogo);
+//        builder.setContent(views);
+//        views.setProgressBar(R.id.progressBar,100,i,false);
+//        NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+//        manager.notify(100, builder.build());
+//
+//
+//        new Timer().schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                i++;
+//                builder.setProgress(100, i, false);
+//                NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//                manager.notify(0x45ab, builder.build());
+//            }
+//        }, 1000,3000);
+
+    }
 
 
 }

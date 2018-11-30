@@ -2,17 +2,22 @@ package com.zalyyh.yyh.view.edittext;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.zalyyh.yyh.view.ViewArrt;
 import com.zalyyh.yyh.zal.R;
 
 import java.util.regex.Matcher;
@@ -26,6 +31,20 @@ public class EditTextDelete extends LinearLayout implements TextWatcher {
     protected LinearLayout.LayoutParams zImageLp;
     private int zimage_state = 0;
     protected String regEx = "";
+    /*可以通过 xml 设置的属性*/
+    protected String digits;
+    protected String hint;
+    protected int textSize =15;
+    protected int gravity =-1;
+    protected int maxLines =-1;
+    protected int lines =-1;
+    protected int maxLength =-1;
+    protected ColorStateList textColor = null;
+    protected Drawable d= null;
+
+
+
+
     public EditTextDelete(Context context) {
         this(context,null);
     }
@@ -34,15 +53,6 @@ public class EditTextDelete extends LinearLayout implements TextWatcher {
     }
     public EditTextDelete(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.EditTextDelete);
-        for (int i = 0; i < a.getIndexCount(); i++) {
-            int attr = a.getIndex(i);
-            if(attr == R.styleable.EditTextDelete_digits){
-                CharSequence digits =  a.getText(attr);
-                Log.e("zalyyh",digits.toString());
-            }
-        }
-
 
         init(context);
     }
@@ -66,6 +76,17 @@ public class EditTextDelete extends LinearLayout implements TextWatcher {
         zEditText.setLayoutParams(zEditLp);
         zEditText.setBackgroundColor(Color.parseColor("#00000000"));
         zEditText.addTextChangedListener(this);
+    }
+    protected void setAttrs(){
+        zEditText.setKeyListener(DigitsKeyListener.getInstance(digits));
+        zEditText.setHint(hint);
+        zEditText.setTextSize(textSize);
+        if(textColor != null) zEditText.setTextColor(textColor);
+        zEditText.setMaxLines(maxLines);
+        zEditText.setGravity(gravity);
+        zEditText.setLines(lines);
+        zEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(maxLength) });
+        if(d != null) zImageView.setImageDrawable(d);
     }
     /**
      * 设置清除图标的显示与隐藏，
