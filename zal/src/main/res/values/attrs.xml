@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="gravity">
+    <attr name="gravityz">
         <!-- Push object to the top of its container, not changing its size. -->
         <flag name="top" value="0x30" />
         <!-- Push object to the bottom of its container, not changing its size. -->
@@ -42,7 +42,7 @@
         <attr name="hint" format="string" />
         <attr name="textSize" format="dimension" />
         <attr name="textColor" format="reference|color" />
-        <attr name="gravity" />
+        <attr name="gravityz" />
         <attr name="maxLines" format="integer" min="0" />
         <attr name="lines" format="integer" min="0" />
         <attr name="maxLength" format="integer" min="0" />
