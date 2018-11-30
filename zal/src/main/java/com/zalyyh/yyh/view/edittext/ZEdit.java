@@ -132,6 +132,14 @@ public class ZEdit extends EditTextDelete {
     public void setHint(String text) {
         zEditText.setHint(text);
     }
+    /**
+     * 获取焦点
+     */
+    public boolean requeFocu() {
+        zEditText.setFocusable(true);
+        zEditText.setFocusableInTouchMode(true);
+       return zEditText.requestFocus();
+    }
     public EditText gete() {
         return zEditText;
     }
