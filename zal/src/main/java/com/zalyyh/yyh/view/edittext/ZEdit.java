@@ -33,12 +33,12 @@ public class ZEdit extends EditTextDelete {
         digits = (String) ViewArrt.getobject("",a,R.styleable.EditTextDelete_digits);
         hint = (String) ViewArrt.getobject("",a,R.styleable.EditTextDelete_hint);
         textSize = a.getDimensionPixelSize(ViewArrt.getIntType(a,R.styleable.EditTextDelete_textSize),textSize);
-        textColor = a.getColorStateList(ViewArrt.getIntType(a,R.styleable.EditTextDelete_textColor));
-        gravity = (int)ViewArrt.getobject(-1,a,R.styleable.EditTextDelete_gravityz);
+        textColor = a.getColorStateList(ViewArrt.getIntType(a,R.styleable.EditTextDelete_etextColor));
+        gravity = (int)ViewArrt.getobject(-1,a,R.styleable.EditTextDelete_gravity);
         lines = (int)ViewArrt.getobject(-1,a,R.styleable.EditTextDelete_lines);
         maxLength = (int)ViewArrt.getobject(-1,a,R.styleable.EditTextDelete_maxLength);
         maxLines = (int)ViewArrt.getobject(-1,a,R.styleable.EditTextDelete_maxLines);
-        d = a.getDrawable(ViewArrt.getIntType(a,R.styleable.EditTextDelete_src));
+        d = a.getDrawable(ViewArrt.getIntType(a,R.styleable.EditTextDelete_esrc));
        setAttrs();
     }
 

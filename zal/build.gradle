@@ -10,8 +10,9 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 20
+        minSdkVersion 19
         targetSdkVersion 27
+        buildToolsVersion "27.0.2"
         versionCode 1
         versionName "1.0"
 
@@ -33,30 +34,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compileOnly 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:appcompat-v7:27.0.2'
 
 }
-////删除任务
-//task deleteBuild(type: Delete) {
-//    delete OUTPUT_PATH + SDK_BASENAME + SDK_VERSION + ".jar"
-//}
-////创建任务
-//task makeJar(type: Jar) {
-//    //需要打包的原始classes.jar
-//    from zipTree(INPUT_PATH)
-//    //将assets目录打入jar包
-//    from fileTree(dir: 'src/main',include: ['assets/**'])
-//    from fileTree(dir: 'src/main',include: ['res/**'])
-//    from fileTree(dir: 'src/main',include: ['AndroidManifest.xml'])
-//    //去掉不需要打包的目录和文件
-//    exclude('test/', 'BuildConfig.class')
-//    //生成文件名字
-//    baseName = SDK_BASENAME + SDK_VERSION
-//    //生成
-//    destinationDir = file(OUTPUT_PATH)
-//}
-//
-//makeJar.dependsOn(deleteBuild, build)
 
 
 //////// 打包发布配置开始 ////////
