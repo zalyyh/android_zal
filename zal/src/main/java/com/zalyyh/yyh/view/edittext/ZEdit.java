@@ -1,7 +1,6 @@
 package com.zalyyh.yyh.view.edittext;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
@@ -9,9 +8,6 @@ import android.text.InputFilter;
 import android.util.AttributeSet;
 import android.widget.EditText;
 import android.widget.ImageView;
-
-import com.zalyyh.yyh.view.ViewArrt;
-import com.zalyyh.yyh.zal.R;
 
 public class ZEdit extends EditTextDelete {
     public ZEdit(Context context) {
@@ -24,22 +20,7 @@ public class ZEdit extends EditTextDelete {
 
     public ZEdit(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context,attrs);
 
-    }
-
-    private void init(Context context, @Nullable AttributeSet attrs) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.EditTextDelete);
-        digits = (String) ViewArrt.getobject("",a,R.styleable.EditTextDelete_digits);
-        hint = (String) ViewArrt.getobject("",a,R.styleable.EditTextDelete_hint);
-        textSize = a.getDimensionPixelSize(ViewArrt.getIntType(a,R.styleable.EditTextDelete_textSize),textSize);
-        textColor = a.getColorStateList(ViewArrt.getIntType(a,R.styleable.EditTextDelete_etextColor));
-        gravity = (int)ViewArrt.getobject(-1,a,R.styleable.EditTextDelete_gravity);
-        lines = (int)ViewArrt.getobject(-1,a,R.styleable.EditTextDelete_lines);
-        maxLength = (int)ViewArrt.getobject(-1,a,R.styleable.EditTextDelete_maxLength);
-        maxLines = (int)ViewArrt.getobject(-1,a,R.styleable.EditTextDelete_maxLines);
-        d = a.getDrawable(ViewArrt.getIntType(a,R.styleable.EditTextDelete_esrc));
-       setAttrs();
     }
 
 
