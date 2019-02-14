@@ -1,1 +1,1 @@
-include ':app', ':zal'
+include ':app', ':zal', ':mvvm'

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
@@ -18,7 +19,7 @@ public class VerificationText extends TextView {
     private Timer time;
     private int times = 60;
     private String volue;
-    private String startVolue="%后重新获取";
+    private String startVolue="%d后重新获取";
     private int textColor;
     private int startColor;
     private int date = 60;
@@ -40,87 +41,69 @@ public class VerificationText extends TextView {
 
     private void init(Context context) {
         text = this;
-        time = new Timer();
         volue = getText().toString().trim();
         textColor = getCurrentTextColor();
-
+        startColor = getCurrentTextColor();
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_MOVE:
-            case MotionEvent.ACTION_DOWN:
-                if (process == 0 && date == times) {
-                    time.purge();
-                    time.schedule(new TimerTask() {
+    public void start(){
+        if (process == 0 && date == times) {
+            process = 1;
+            time = new Timer();
+            time.purge();
+            time.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            new Thread(new Runnable() {
+                            new Handler(Looper.getMainLooper()).post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            if (date == 0) {
-                                                text.setText(volue);
-                                                time.cancel();
-                                                date = times;
-                                                text.setTextColor(textColor);
-                                            } else {
-
-                                                text.setTextColor(startColor);
-                                                text.setText(String.format(startVolue, ""+ date--));
-                                            }
-                                        }
-                                    });
-
+                                    if (date == 0) {
+                                        text.setText(volue);
+                                        time.cancel();
+                                        time = null;
+                                        date = times;
+                                        process = 0;
+                                        text.setTextColor(textColor);
+                                    } else {
+                                        text.setTextColor(startColor);
+                                        date--;
+                                        text.setText(String.format(startVolue, date));
+                                        Log.e("zalyyh",String.format(startVolue, date));
+                                    }
                                 }
-                            }).start();
+                            });
+
                         }
-                    }, 0, 1000);
-                } else {
-                    return true;
+                    }).start();
                 }
-                break;
-            case MotionEvent.ACTION_UP:
-                //点击抬起后，回复初始位置。
-                if (process != 0) {
-                    process = 0;
-                }
-                break;
+            }, 0, 1000);
         }
-        //这句话不要修改
-        return super.onTouchEvent(event);
     }
 
-    /**
-     * 设置循环次数
-     * @param times
-     */
     public void setTimes(int times) {
         this.times = times;
         this.date = times;
     }
 
-    /**
-     * 设置循环状态下显示的文字颜色
-     *
-     * @param startColor
-     */
+
     public void setStartColor(int startColor) {
         this.startColor = startColor;
     }
 
-    /**
-     * 设置循环状态下显示的文字
-     *
-     * @param startVolue
-     */
+
     public void setStartVolue(String startVolue) {
         this.startVolue = startVolue;
     }
 
-
-
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if(time !=null){
+            time.cancel();
+            time = null;
+        }
+    }
 }

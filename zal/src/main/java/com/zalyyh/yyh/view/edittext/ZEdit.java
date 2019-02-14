@@ -99,31 +99,34 @@ public class ZEdit extends EditTextDelete {
 
     /**
      * 输入内容长度限制
-     *
-     * @param
+     * @param num
      */
     public void setMaxSize(int num) {
         zEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(num)}); //最大输入长度
     }
+
     /**
      * 设置提示文字
      *
-     * @param
+     * @param text
      */
     public void setHint(String text) {
         zEditText.setHint(text);
     }
+
     /**
      * 获取焦点
      */
     public boolean requeFocu() {
         zEditText.setFocusable(true);
         zEditText.setFocusableInTouchMode(true);
-       return zEditText.requestFocus();
+        return zEditText.requestFocus();
     }
+
     public EditText gete() {
         return zEditText;
     }
+
     public ImageView geti() {
         return zImageView;
     }
